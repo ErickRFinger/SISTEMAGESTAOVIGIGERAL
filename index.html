@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Escala de Viagens 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="glass-header">
+      <h1>🚀 Cronograma de Viagens 2.0</h1>
+      <p class="subtitle">A Fila é Soberana</p>
+    </header>
+
+    <main class="dashboard">
+      <aside class="leaderboard-section glass-panel">
+        <h2>🏆 Ranking & Pontos</h2>
+        <ul id="leaderboard" class="leaderboard-list">
+          <!-- Populated by JS -->
+        </ul>
+      </aside>
+
+      <section class="schedule-section glass-panel">
+        <div class="schedule-header">
+          <h2>Próximas Viagens</h2>
+          <div class="header-actions">
+            <button id="addTripBtn" class="btn btn-primary">Gerar Próxima Viagem</button>
+            <button id="exportCsvBtn" class="btn btn-secondary">📥 Exportar CSV</button>
+          </div>
+        </div>
+        
+        <div class="table-responsive">
+          <table id="scheduleTable">
+            <thead>
+              <tr>
+                <th>Viagem</th>
+                <th>Data Prevista</th>
+                <th>Líder</th>
+                <th>Auxiliar</th>
+                <th>Status</th>
+                <th>Original</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Trade Modal -->
+    <dialog id="tradeModal" class="glass-modal">
+      <div class="modal-content">
+        <h2>Negociar Troca</h2>
+        <p id="tradeTripInfo"></p>
+        
+        <form class="trade-form" id="tradeForm">
+          <div class="form-group">
+            <label for="tradeTarget">Você quer trocar com:</label>
+            <select id="tradeTarget" required class="glass-input">
+              <!-- Populated dynamically based on role -->
+            </select>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('tradeModal').close()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Confirmar Troca (Custa 1 Ponto)</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- Edit Modal -->
+    <dialog id="editModal" class="glass-modal">
+      <div class="modal-content">
+        <h2>Editar Viagem <span id="editTripId"></span></h2>
+        
+        <form class="trade-form" id="editForm">
+          <div class="form-group">
+            <label for="editDate">Data Prevista:</label>
+            <input type="date" id="editDate" required class="glass-input">
+          </div>
+          <div class="form-group">
+            <label for="editLeader">Líder:</label>
+            <select id="editLeader" required class="glass-input">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="editAssistant">Auxiliar:</label>
+            <select id="editAssistant" required class="glass-input">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('editModal').close()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <div id="toastContainer" class="toast-container"></div>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
