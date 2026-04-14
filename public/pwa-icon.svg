@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0f172a" rx="112" />
+  <text x="50%" y="45%" font-size="160" fill="#3b82f6" font-family="sans-serif" font-weight="900" dominant-baseline="middle" text-anchor="middle">VIGI</text>
+  <text x="50%" y="65%" font-size="60" fill="#94a3b8" font-family="sans-serif" font-weight="600" dominant-baseline="middle" text-anchor="middle">Envios</text>
+</svg>
